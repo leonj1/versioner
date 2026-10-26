@@ -9,7 +9,7 @@ on:
 jobs:
   test:
     name: Test and Version
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
 
     outputs:
       version: ${{ steps.version.outputs.version }}
@@ -58,7 +58,7 @@ jobs:
 
   release:
     name: Release
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux, x64]
     needs: test
     if: github.ref == 'refs/heads/master' && needs.test.outputs.is-prerelease == 'false'
 
